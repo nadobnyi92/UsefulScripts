@@ -66,6 +66,8 @@ set winheight=20
 
 set fileencoding=utf-8
 
+set foldmethod=syntax
+au BufRead * normal zR
 
 \" С/C++ файлы
 \" Расставлять отступы в стиле С
@@ -91,21 +93,6 @@ autocmd filetype css set noexpandtab
 \" Не расставлять отступы в стиле С
 autocmd filetype python set nocin
 
-\"Clang-completer
-\" Включить дополнительные подсказки (аргументы функций, шаблонов и т.д.)
-let g:clang_snippets=1
-\" Использоать ultisnips для дополнительных подскахок (чтобы подсказки шаблонов
-\" автогенерации были в выпадающих меню)
-let g:clang_snippets_engine = 'ultisnips'
-\" Периодически проверять проект на ошибки
-let g:clang_periodic_quickfix=1
-\" Подсвечивать ошибки
-let g:clang_hl_errors=1
-\" Автоматически закрывать окно подсказок после выбора подсказки
-let g:clang_close_preview=1
-\" По нажатию Ctrl+F проверить поект на ошибки
-map <c-f> :call g:ClangUpdateQuickFix()<cr>
-
 \" NERDTree
 \" Открывать дерево по нажаить Ctrl+n
 map <c-n> :NERDTreeToggle<cr>
@@ -116,20 +103,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists(\"s:std_in\") | NERDTree | endif     
 \" Открывать новые окна справа
 set splitright
-
-\" Snippets                                                                      
-\" Раскрыть шаблон
-let g:UltiSnipsExpandTrigger=\"<c-a>\"
-\" Отобразить список шаблонов
-let g:UltiSnipsListSnippets=\"<c-d>\"                                             
-\" Идти вперед по шиблонам
-let g:UltiSnipsJumpForwardTrigger=\"<c-b>\"
-\" Идти назад
-let g:UltiSnipsJumpBackwardTrigger=\"<c-z>\"
-\" Разделять окно вертикально при редактировании
-let g:UltiSnipsEditSplit=\"vertical\"            
-\" Версия Python (Нужно указать используемую в системе по-умолчанию)                                 
-let g:UltiSnipsUsePythonVersion=2 
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
