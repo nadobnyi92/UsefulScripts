@@ -22,15 +22,15 @@ filetype plugin indent on    \" required
 FULL_INIT="
 \" Позволим конфигурационным файлам в проекте изменять настройки vim'a
 \" Включим чтение конфигурационных файлов .vimrc в текущей директории
-set exrc                                                                     
+set exrc
 \" Запретим опасные команды в локальных .vimrc файлах (эта опция должна идти в вашем 
 \" ~/.vimrc после запрещаемых команд, таких как write)
 set secure 
 
 \" Отступы пробелами, а не табуляциями
 set expandtab
-\" Ширина строки 80 символов
-set textwidth=80
+\" Ширина строки 120 символов
+set textwidth=120
 \" Ширина табуляции в колонках
 set ts=4
 \" Количество пробелов (колонок) одного отступа
@@ -49,20 +49,20 @@ let &colorcolumn=&textwidth
 \" Цвет линии - тёмно-серый
 highlight ColorColumn ctermbg=darkgray
 
-\" Игнорировать регистр при поиске                                               
-set ic                                                                          
-\" Подсвечивать поиск                                                            
-set hls                                                                         
-\" Использовать последовательный поиск                                         
-set is 
+\" Игнорировать регистр при поиске
+set ic
+\" Подсвечивать поиск
+set hls
+\" Использовать последовательный поиск
+set is
 
-\" Включаем bash-подобное дополнение командной строки                            
+\" Включаем bash-подобное дополнение командной строки
 set wildmode=longest:list,full
 
-\" Не делать все окна одинакового размера                                        
-set noequalalways                                                               
-\" Высота окон по-умолчанию 20 строк                                             
-set winheight=20    
+\" Не делать все окна одинакового размера
+set noequalalways
+\" Высота окон по-умолчанию 20 строк
+set winheight=20
 
 set fileencoding=utf-8
 
@@ -98,24 +98,48 @@ autocmd filetype python set nocin
 map <c-n> :NERDTreeToggle<cr>
 \" Немного магии, если мы запустим Vim без указания файла для редактирования,
 \" то дерево будет открыто, а если будет указан файл, то дерево 
-\" открыто не будет                                                   
-autocmd StdinReadPre * let s:std_in=1                                           
-autocmd VimEnter * if argc() == 0 && !exists(\"s:std_in\") | NERDTree | endif     
+\" открыто не будет
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists(\"s:std_in\") | NERDTree | endif
 \" Открывать новые окна справа
 set splitright
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+set listchars=eol:¶,tab:>·,trail:~,extends:>,precedes:<,space:·
+set list
+
+colorscheme space-vim-dark
+
+"
+
+BASH_LOCAL="
+if [ -f ~/.bash_local ]; then
+  . ~/.bash_local
+fi
+"
+
+BASH_COMMANDS="
+#!/bin/bash
+
+bind '\"\\e[A\":history-search-backward'
+bind '\"\\e[B\":history-search-forward'
 
 "
 
 rm -Rf ~/.vim*
 
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone git@github.com:rafi/awesome-vim-colorschemes.git tmp #TODO temp directory
+mv tmp/* ~/.vim/
 
-echo "$BASE_INIT" > ~/.vimrc
+echo "${BASE_INIT}" > ~/.vimrc
 
 vim +PluginInstall +qall
 
-echo "$FULL_INIT" >> ~/.vimrc
+echo "${FULL_INIT}" >> ~/.vimrc
 
+echo "${BASH_LOCAL}" >> ~/.bashrc
+
+echo "${BASH_COMMANDS}" > ~/.bash_local
 
