@@ -7,11 +7,10 @@ filetype off
 \" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-\" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
-\" User defined plugins
+Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'https://github.com/tpope/vim-fugitive'
 
 \" All of your Plugins must be added before the following line
 call vundle#end()            \" required
