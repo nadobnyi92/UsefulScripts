@@ -9,6 +9,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/vim-clang-format'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'kien/ctrlp.vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()            " required
 
