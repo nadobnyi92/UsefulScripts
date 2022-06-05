@@ -27,7 +27,8 @@ done
 
 nvim -c "CocInstall -sync coc-clangd coc-tsserver coc-json coc-html coc-css coc-pyright" +qall
 
-echo "${BASH_LOCAL}" >> ~/.bashrc
-
+if [ ! -f '~/.bash_local' ]; then
+    echo "${BASH_LOCAL}" >> ~/.bashrc
+fi
 cp bash_config/.bash_local "${HOME}"
 
