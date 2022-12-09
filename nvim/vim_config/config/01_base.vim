@@ -47,6 +47,8 @@ set fileencoding=utf-8
 set foldmethod=syntax
 au BufRead * normal zR
 
+colorscheme onedark
+
 " С/C++ файлы
 " Расставлять отступы в стиле С
 autocmd filetype c,cpp set cin

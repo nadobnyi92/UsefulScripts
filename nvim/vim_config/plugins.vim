@@ -11,6 +11,7 @@ Plug 'itspriddle/vim-shellcheck'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'kien/ctrlp.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'derekwyatt/vim-fswitch'
 
 call plug#end()            " required
 
