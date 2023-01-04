@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo apt install neovim nodejs npm clangd clang-tools
+# sudo apt install neovim nodejs npm clangd clang-tools
+sudo dnf install neovim nodejs npm clang-tools-extra
 
 readonly VIM_CONFIG=~/.config/nvim/init.vim
 readonly VIM_CONF_PATH='vim_config'

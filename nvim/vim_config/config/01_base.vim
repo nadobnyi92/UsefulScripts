@@ -45,6 +45,8 @@ set winheight=20
 set fileencoding=utf-8
 
 set foldmethod=syntax
+set nofoldenable    " disable folding
+
 au BufRead * normal zR
 
 colorscheme onedark
