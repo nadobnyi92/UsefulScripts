@@ -1,7 +1,15 @@
 #!/bin/bash
 
-# sudo apt install neovim nodejs npm clangd clang-tools
-sudo dnf install neovim nodejs npm clang-tools-extra
+if [ -n "$(command -v apt)" ]; then
+    sudo apt install neovim nodejs npm clangd clang-tools
+elif [ -n "$(command -v dnf)" ];then
+    sudo dnf install neovim nodejs npm clang-tools-extra
+elif [ -n "$(command -v pacman)" ]; then
+    sudo pacman -S cmake make gcc neovim nodejs npm clang-tools-extra python-pip
+else
+    echo "Undefined package manager!!!"
+fi
+python3 -m pip install --user --upgrade pynvim
 
 readonly VIM_CONFIG=~/.config/nvim/init.vim
 readonly VIM_CONF_PATH='vim_config'
@@ -11,6 +19,8 @@ if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
 "
+
+cp .clang_format ~
 
 rm -f "${VIM_CONFIG}"
 

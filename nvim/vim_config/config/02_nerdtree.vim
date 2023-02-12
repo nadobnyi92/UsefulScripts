@@ -14,3 +14,5 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 set listchars=eol:¶,tab:>·,trail:~,extends:>,precedes:<,space:·
 set list
 
+let NERDTreeShowHidden=1
+
