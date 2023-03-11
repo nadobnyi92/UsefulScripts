@@ -11,6 +11,7 @@ Plug 'rhysd/vim-clang-format'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'kien/ctrlp.vim'
+Plug 'dyng/ctrlsf.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'SirVer/ultisnips'
